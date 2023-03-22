@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var \Magenest\BuyNow\Block\Adminhtml\System\BuyNow $block
+ * */
+
+// call block function and get value of system config field as below.
+
+$configValueBuyNow = $block->getStatusBuyNowButton();
+?>
+<button type="submit" <?php echo ($configValueBuyNow==0)?"style='display: none'":false; ?> title="<?php /* @escapeNotVerified */ echo __('Buy Now') ?>" id="buy-now" class="action buynow primary" data-mage-init='
+{
+    "Magenest_BuyNow/js/buy-now": {
+        "form": "#product_addtocart_form"
+    }
+}
+'>
+    <span><?php /* @escapeNotVerified */ echo __('Buy Now') ?></span>
+</button>
