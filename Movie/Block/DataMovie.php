@@ -4,6 +4,7 @@ namespace Magenest\Movie\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magenest\Movie\Model\ResourceModel\DirectorFactory As DirectorResourceModelFactory;
+use Magenest\Movie\Model\ResourceModel\ActorFactory As ActorResourceModelFactory;
 
 class DataMovie extends Template
 {
@@ -18,7 +19,9 @@ class DataMovie extends Template
         \Magenest\Movie\Model\ResourceModel\Director\CollectionFactory $directorFactory,
         \Magenest\Movie\Model\ResourceModel\Movie\CollectionFactory $movieFactory,
         \Magenest\Movie\Model\DirectorFactory $directorModelFactory,
+        \Magenest\Movie\Model\ActorFactory $actorModelFactory,
         DirectorResourceModelFactory $directorResourceModelFactory,
+        ActorResourceModelFactory $actorResourceModelFactory,
         array $data = []
     )
     {
@@ -26,7 +29,9 @@ class DataMovie extends Template
         $this->director = $directorFactory;
         $this->movie = $movieFactory;
         $this->directorFactory = $directorModelFactory;
+        $this->actorFactory = $actorModelFactory;
         $this->directorResourceModelFactory = $directorResourceModelFactory;
+        $this->actorResourceModelFactory = $actorResourceModelFactory;
         parent::__construct($context, $data);
     }
 
@@ -47,5 +52,10 @@ class DataMovie extends Template
 //        return $this->director->create()->addFieldToFilter('director_id', ['eq'=>$director_id])->getFirstItem()->getDirectorName();
         $model = $this->directorFactory->create();
         return $model->load($director_id)->getData('director_name');
+    }
+
+    public function getListActorNameByMovieId($movie_id)
+    {
+        return $this->actor->create()->addFieldToFilter('movie_id', ['eq'=>$movie_id])->getData();
     }
 }

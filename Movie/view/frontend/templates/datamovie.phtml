@@ -42,7 +42,14 @@ if ($dataMoive->count()) {
                         <?= $block->getDirectorNameById($item->getDirectorId()) ?>
                     </td>
                     <td data-th="<?= $block->escapeHtml(__('Actors')) ?>" class="col name">
-                        <?php  ?>
+                        <?php $arrListNameActor = $block->getListActorNameByMovieId($item->getId());
+                                $arrName = [];
+                                foreach ($arrListNameActor as $key=>$value) {
+                                    $arrName[] = $value['name'];
+                                }
+                                $stringListNameactor = implode(', ', $arrName);
+                                echo $stringListNameactor;
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

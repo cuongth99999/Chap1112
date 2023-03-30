@@ -24,10 +24,12 @@
     "magenest_actor": {
         "column": {
             "actor_id": true,
-            "name": true
+            "name": true,
+            "movie_id": true
         },
         "constraint": {
-            "PRIMARY": true
+            "PRIMARY": true,
+            "MAGENEST_ACTOR_MOVIE_ID_MAGENEST_MOVIE_MOVIE_ID": true
         }
     },
     "magenest_movie_actor": {

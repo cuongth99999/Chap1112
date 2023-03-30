@@ -44,6 +44,10 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         $john = $this->getSelect()->joinLeft(
             ['movie_director' => $this->getTable('magenest_director')],
             'main_table.director_id = movie_director.director_id');
+
+        $john2 = $this->getSelect()->joinLeft(
+            ['movie_actor' => $this->getTable('magenest_actor')],
+            'main_table.movie_id = movie_actor.movie_id');
         return $this;
     }
 }

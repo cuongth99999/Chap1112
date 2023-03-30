@@ -31,9 +31,12 @@
     <table name="magenest_actor" resource="default">
         <column xsi:type="int" name="actor_id" identity="true" nullable="false" padding="10"/>
         <column xsi:type="text" name="name"/>
+        <column xsi:type="int" name="movie_id"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="actor_id" />
         </constraint>
+        <constraint xsi:type="foreign" referenceId="movie_id" table="magenest_actor"
+                    column="movie_id" referenceTable="magenest_movie" referenceColumn="movie_id" onDelete="CASCADE"/>
     </table>
 
     <table name="magenest_movie_actor" resource="default">
